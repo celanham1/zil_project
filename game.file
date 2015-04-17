@@ -1,0 +1,57 @@
+<TITLE "Kuriteru20120314">
+<AUTHOR "Frances Van Scoy">
+<RELEASE "Release 1 / Serial number 121010 / Inform 7 build 6G60 (I6/v6.32 lib 6/12N) SD">
+<ROOM YARD
+(LOC ROOMS)
+(DESC "Kuriteru's Yard")
+(LDESC "This is where Kuriteru lives. A large tree is in the middle of the square. A swing made from a tire and rope hangs from a branch.")
+(SOUTH TO VEGETABLE_PATCH)
+(WEST TO BERRY_PATCH)
+(UP TO TREEHOUSE)>
+<ROOM TREEHOUSE
+(LOC ROOMS)
+(DESC "Treehouse")
+(LDESC "Kuriteru lives in this treehouse. It is woven from reeds and flexible tree branches.")
+(DOWN TO YARD)>
+<ROOM VEGETABLE_PATCH
+(LOC ROOMS)
+(DESC "Vegetable Patch.")
+(LDESC "The Vegetable Patch has several asparagus plants.")
+(NORTH TO YARD)>
+<ROOM BERRY_PATCH
+(LOC ROOMS)
+(DESC "Berry Patch")
+(LDESC "The Berry Patch has several strawberry plants.")
+(EAST TO YARD)>
+<OBJECT STRAWBERRY
+(LOC BERRY_PATCH)
+(DESC "strawberry")
+(ADJECTIVE yummy)>
+<OBJECT ASPARAGUS
+(LOC VEGETABLE_PATCH)
+(DESC "asparagus")
+(ADJECTIVE yucky)
+(ACTION ASPARAGUS-F)>
+<SET STRAWBERRY 25>
+<SET ASPARAGUS 12>
+<ROUTINE ASPARAGUS-F ()
+<COND(<VERB? ,EAT>
+	<SETG POISON 1>)>>
+<ROUTINE POISON ()
+<COND (<EQUAL? ,POISON_COUNTER 2>
+	<TELL "You are the color green.">)>
+<COND (<EQUAL? ,POISON_COUNTER 4>
+	<TELL "You are now the color purple.">
+	<SETG POISON 0>
+	<SETG POISON_COUNTER 0>)>>
+<UNDERSTAND ASK
+<COND (<EQUAL? ,POISON 1>
+	<TELL "You are the color green">)>
+<COND (<EQUAL? ,POISON 0>
+	<TELL "You are the color purple">)>>
+
+
+
+
+
+
